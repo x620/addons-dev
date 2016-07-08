@@ -17,7 +17,8 @@
     ],
     "external_dependencies": {"python": [], "bin": []},
     "data": [
-        'views/base_limit.xml'
+        'views/base_limit.xml',
+        'data/data.xml',
     ],
     "qweb": [],
     "demo": [],

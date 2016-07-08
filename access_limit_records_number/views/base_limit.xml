@@ -5,6 +5,7 @@
             <field name="model">base.limit.records_number</field>
             <field name="arch" type="xml">
                 <tree string="Records Number" editable="top">
+                    <field name="name"/>
                     <field name="model_id"/>
                     <field name="max_records"/>
                     <field name="domain"/>
@@ -17,6 +18,7 @@
                 <form string="Records Number">
                     <sheet>
                        <group col="3">
+                            <field name="name"/>
                            <field name="model_id"/>
                            <field name="max_records"/>
                            <field name="domain"/>
@@ -30,9 +32,8 @@
             <field name="arch" type="xml">
                 <search string="Records Number">
                     <filter string="Unlimited Table" domain="[('max_records','in',[0, None, False])]"/>
+                    <field name="name"/>
                     <field name="model_id"/>
-                    <field name="max_records"/>
-                    <field name="domain"/>
                 </search>
             </field>
         </record>
