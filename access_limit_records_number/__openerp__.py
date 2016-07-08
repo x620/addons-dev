@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    "name": """Limit records""",
+    "name": """Limit for tables""",
     "summary": """Module allow limit records of the table""",
     "category": "Extra tools",
     "images": [],
@@ -16,7 +16,9 @@
         'base_action_rule',
     ],
     "external_dependencies": {"python": [], "bin": []},
-    "data": [],
+    "data": [
+        'views/base_limit.xml'
+    ],
     "qweb": [],
     "demo": [],
 
