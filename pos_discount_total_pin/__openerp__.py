@@ -13,9 +13,15 @@
     #"price": 9.00,
     #"currency": "EUR",
 
-    "depends": ['pos_pin'],
+    "depends": [
+        'pos_discount_total',
+        'pos_pin',
+    ],
     "external_dependencies": {"python": [], "bin": []},
-    "data": [],
+    "data": [
+        'views.xml',
+        'data.xml',
+    ],
     "qweb": [],
     "demo": [],
 

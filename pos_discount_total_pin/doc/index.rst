@@ -22,11 +22,9 @@ Set PIN for users which has access change total discount for POS Orders:
 
 Set permission for orders:
 
-* Open menu ``Point of Sale / Orders``
+* Open menu ``Point of Sale / Configuration / Point of Sale``
 
-* Select order
-
-* Choose ``Total discount approval -> Administrator``
+* Choose ``Total Discount Group -> Point of Sale / Manager``
 
 Set total discount for POS Orders:
 
