@@ -14,7 +14,7 @@ Set PIN for users which has access change total discount for POS Orders:
 
 * Open menu ``Settings / Users / Users``
 
-* Select user
+* Select Administrator user
 
 * Open tab ``Point of Sale``
 
@@ -24,19 +24,23 @@ Set permission for orders:
 
 * Open menu ``Point of Sale / Configuration / Point of Sale``
 
-* Choose ``Total Discount Group -> Point of Sale / Manager``
+* Update field **Total Discount Group** if needed
 
-Set total discount for POS Orders:
+Switch to Demo user (to show Security PIN dialog) and set discount for POS Orders:
 
 * Open menu ``Point of Sale / Dashboard``
 
-* Click ``[Resume]``
+* Open POS Session
 
 * Click on the two products, e.g. 2L Evian and 50cl Perrier
 
-* Click on the summary line
+* Click on order line or summary line
 
 * Set discount: **5**
+
+* Click ``[Payment]`` to open Payment screen
+
+* Click ``[Validate]``
 
 * A dialog box appears. Type security pin and press ``[Enter]``.
 

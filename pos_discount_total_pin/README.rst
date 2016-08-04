@@ -2,7 +2,7 @@
  Restrict set discounts for all POS Orders
 ===========================================
 
-The module depends on the pos_discount_total module which allow set discount for all selected POS Orders. It module disallow it ability for users hasn't access.
+The module depends on the pos_pin module. Before POS order validation the module checks whether the order with discount. If it does then a cashier get popup with selection users. A sale is take place if the selected user has group which is specified in the POS config parameter "Total Discount Group". Otherwise the sale is rejected.
 
 Credits
 =======
