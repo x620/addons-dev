@@ -2,7 +2,7 @@
  Restrict set discounts for all POS Orders
 ===========================================
 
-The module depends on the pos_pin module. Before POS order validation the module checks whether the order with discount. If it does then a cashier get popup with users which belong to the group selected in the "Total Discount Group" field. When you select user then you must type security PIN in the popup.
+The module depends on the pos_pin module. Before POS order validation the module checks whether the order has discount. If it does then a cashier gets popup with users which belong to the group specified in the "Total Discount Group" field. After it supervisor type security PIN that confirm a sale.
 
 Credits
 =======
