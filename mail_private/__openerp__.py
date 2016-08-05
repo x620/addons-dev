@@ -18,7 +18,9 @@
     ],
     "external_dependencies": {"python": [], "bin": []},
     "data": [],
-    "qweb": [],
+    "qweb": [
+        'static/src/xml/mail.xml',
+    ],
     "demo": [],
 
     "post_load": None,
