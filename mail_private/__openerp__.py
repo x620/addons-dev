@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 {
-    "name": """Select recipients for messages""",
-    "summary": """Module allow select recipients for send messages""",
-    "category": "Discuss",
+    "name": """Internal Messaging""",
+    "summary": """Allows you to send private messages to specified recipients only no matter who are in followers list.""",
+    "category": "Social Network",
     "images": [],
     "version": "1.0.0",
     "application": False,
@@ -17,9 +17,12 @@
         "mail",
     ],
     "external_dependencies": {"python": [], "bin": []},
-    "data": [],
+    "data": [
+        'template.xml',
+        'view.xml',
+    ],
     "qweb": [
-        'static/src/xml/mail.xml',
+        'static/src/xml/mail_private.xml',
     ],
     "demo": [],
 
