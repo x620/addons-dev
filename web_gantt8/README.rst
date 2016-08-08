@@ -15,10 +15,6 @@ Sponsors
 --------
 * `Associated Environmental Systems <https://www.associatedenvironmentalsystems.com/>`_
 
-Sponsors
---------
-* `IT-Projects LLC <https://it-projects.info>`_
-
 Further information
 ===================
 
