@@ -8,6 +8,7 @@
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='sequence']" position="after">
                     <field name="date_start" groups="base.group_no_one"/>
+                    <field name="date" groups="base.group_no_one"/>
                 </xpath>
             </field>
         </record>
