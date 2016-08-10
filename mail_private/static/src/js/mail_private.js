@@ -69,7 +69,7 @@ openerp.mail_private = function(instance){
                 'context': _.extend(this.parent_thread.context, {
                     'mail_post_autofollow': true,
                     'mail_post_autofollow_partner_ids': partner_ids,
-                    'private': self.private
+                    'default_private': self.private
                 }),
                 'type': 'comment',
                 'content_subtype': 'plaintext',
