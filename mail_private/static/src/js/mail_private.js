@@ -163,16 +163,17 @@ openerp.mail_private = function(instance){
                     var followers = thread[i].message_follower_ids;
                     self.result[res_id] = [];
                     return new instance.web.Model('res.partner').call(
-                        'search_read', [[['id', 'in', followers]]]
+                        'read', [followers, ['name', 'email', 'user_ids']]
                     ).then(function (res_partners){
                         for (var j = 0; j < res_partners.length; j++) {
                             if (!_.include(res_partners[j].user_ids, self.session.uid)){
+                                var partner = res_partners[j];
                                 self.result[res_id].push(
-                                    [res_partners[j].id, res_partners[j].name + '<' + res_partners[j].email + '>']
+                                    [partner.id, partner.name + '<' + partner.email + '>']
                                 );
                             }
                         }
-                        return self.result
+                        return self.result;
                     });
                 }
                 return self.result;
