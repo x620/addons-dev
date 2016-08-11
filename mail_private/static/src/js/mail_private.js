@@ -74,7 +74,7 @@ openerp.mail_private = function(instance){
                 'type': 'comment',
                 'content_subtype': 'plaintext',
             };
-            if (log) {
+            if (log || self.private) {
                 values['subtype'] = false;
             }
             else {
@@ -113,22 +113,24 @@ openerp.mail_private = function(instance){
             // if clicked: call for suggested recipients
             if (event.type == 'click') {
                 this.private = $input.hasClass('oe_compose_post_private');
-                suggested_partners = this.parent_thread.ds_thread.call('message_get_suggested_private_recipients', [[this.context.default_res_id], this.context]).done(function (additional_recipients) {
-                    var thread_recipients = additional_recipients[self.context.default_res_id];
-                    _.each(thread_recipients, function (recipient) {
-                        var parsed_email = mail.ChatterUtils.parse_email(recipient[1]);
-                        if (_.indexOf(email_addresses, parsed_email[1]) == -1) {
-                            self.recipients.push({
-                                'checked': false,
-                                'partner_id': recipient[0],
-                                'full_name': recipient[1],
-                                'name': parsed_email[0],
-                                'email_address': parsed_email[1],
-                                'reason': recipient[2],
-                            })
-                        }
+                this.is_log = false;
+                suggested_partners = this.parent_thread.get_recipients_for_internal_message([this.context.default_res_id], this.context)
+                    .done(function (additional_recipients) {
+                        var thread_recipients = additional_recipients[self.context.default_res_id];
+                        _.each(thread_recipients, function (recipient) {
+                            var parsed_email = mail.ChatterUtils.parse_email(recipient[1]);
+                            if (_.indexOf(email_addresses, parsed_email[1]) == -1) {
+                                self.recipients.push({
+                                    'checked': false,
+                                    'partner_id': recipient[0],
+                                    'full_name': recipient[1],
+                                    'name': parsed_email[0],
+                                    'email_address': parsed_email[1],
+                                    'reason': recipient[2],
+                                })
+                            }
+                        });
                     });
-                });
             }
             else {
                 suggested_partners.resolve({});
@@ -146,6 +148,35 @@ openerp.mail_private = function(instance){
             });
 
             return suggested_partners;
+        }
+    });
+    
+    instance.mail.Thread.include({
+        get_recipients_for_internal_message: function(ids, context){
+            var self = this;
+            self.result = {};
+            return new instance.web.Model(context.default_model).call(
+                'read', [ids, ['message_follower_ids'], context]
+            ).then(function (thread) {
+                for (var i = 0; i < thread.length; i++) {
+                    var res_id = thread[i].id;
+                    var followers = thread[i].message_follower_ids;
+                    self.result[res_id] = [];
+                    return new instance.web.Model('res.partner').call(
+                        'search_read', [[['id', 'in', followers]]]
+                    ).then(function (res_partners){
+                        for (var j = 0; j < res_partners.length; j++) {
+                            if (!_.include(res_partners[j].user_ids, self.session.uid)){
+                                self.result[res_id].push(
+                                    [res_partners[j].id, res_partners[j].name + '<' + res_partners[j].email + '>']
+                                );
+                            }
+                        }
+                        return self.result
+                    });
+                }
+                return self.result;
+            });
         }
     });
 };
