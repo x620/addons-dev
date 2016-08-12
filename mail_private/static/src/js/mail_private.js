@@ -174,13 +174,11 @@ openerp.mail_private = function(instance){
                         'read', [recipient_ids, ['name', 'email', 'user_ids']]
                     ).then(function (res_partners){
                         for (var j = 0; j < res_partners.length; j++) {
-                            if (!_.include(res_partners[j].user_ids, self.session.uid)){
-                                var partner = res_partners[j];
-                                var reason;
-                                if (partner.id == self.customer[0]){
-                                    reason = 'Customer';
-                                } else {
-                                    reason = 'Follower'
+                            var partner = res_partners[j];
+                            if (!_.include(partner.user_ids, self.session.uid)){
+                                var reason = 'Follower';
+                                if (self.customer && partner.id == self.customer[0]){
+                                    reason = 'Partner';
                                 }
                                 self.result[res_id].push(
                                     [partner.id, partner.name + '<' + partner.email + '>', reason]
