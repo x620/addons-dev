@@ -166,7 +166,7 @@ openerp.mail_private = function(instance){
 
                     // Add customer
                     self.customer = thread[i].partner_id;
-                    if (self.customer) {
+                    if (self.customer && !recipient_ids.includes(self.customer[0])) {
                         recipient_ids.splice(0, 0, self.customer[0]);
                     }
 
